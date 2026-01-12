@@ -1,1 +1,28 @@
-# portfolio
+# Portfolio
+
+A clean and simple portfolio showcasing my projects and skills.
+
+## About
+
+This is my personal portfolio website where I display my work, projects, and experience as a developer.
+
+## Features
+
+- Responsive design
+- Project showcase
+- About section
+- Contact information
+
+## Tech Stack
+
+- [Add your technologies here]
+- [e.g., React, JavaScript, CSS]
+
+## Getting Started
+
+### Installation
+
+```bash
+git clone https://github.com/vanshgupta87/portfolio.git
+cd portfolio
+npm install
