@@ -17,12 +17,3 @@ This is my personal portfolio website where I display my work, projects, and exp
 
 - [Add your technologies here]
 - [e.g., React, JavaScript, CSS]
-
-## Getting Started
-
-### Installation
-
-```bash
-git clone https://github.com/vanshgupta87/portfolio.git
-cd portfolio
-npm install
