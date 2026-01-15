@@ -13,7 +13,3 @@ This is my personal portfolio website where I display my work, projects, and exp
 - About section
 - Contact information
 
-## Tech Stack
-
-- [Add your technologies here]
-- [e.g., React, JavaScript, CSS]
