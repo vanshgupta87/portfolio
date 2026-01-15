@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vansh Gupta | Skills</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="logo.svg" type="image/svg+xml">
+    <style>
+        :root {
+            --bg-dark: #020204;
+            --accent-orange: #f39c12;
+            --card-border: rgba(255, 255, 255, 0.15);
+        }
+         nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 30px 10%; background: transparent;
+        }
+        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: 2px; }
+        .nav-links a {
+            color: white; text-decoration: none; margin-left: 30px;
+            font-size: 0.9rem; opacity: 0.7; transition: 0.3s;
+        }
+        .nav-links a:hover { opacity: 1; color: var(--accent-orange); }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--bg-dark); 
+            color: white; 
+            font-family: 'Inter', sans-serif; 
+            overflow-x: hidden;
+        }
+
+        #spaceCanvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; pointer-events: none;
+        }
+
+        .main-header {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+        .main-header h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 800;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #fff 40%, #555 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .flow-container {
+            max-width: 1200px; margin: 0 auto; padding: 0 20px 100px;
+        }
+
+        .category-node {
+            margin-bottom: 60px; text-align: center;
+            opacity: 0; transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .category-node.reveal { opacity: 1; transform: translateY(0); }
+
+        .node-label {
+            color: var(--accent-orange);
+            font-weight: 800; padding: 10px 30px;
+            text-transform: uppercase; letter-spacing: 4px;
+            font-size: 0.9rem; position: relative;
+        }
+
+        .skills-grid {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+            perspective: 1000px; margin-top: 30px;
+        }
+
+        /* --- ENHANCED 3D SKILL CARD --- */
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1.5px solid var(--card-border);
+            backdrop-filter: blur(10px);
+            padding: 30px 10px; width: 140px; border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer; position: relative; overflow: hidden;
+        }
+
+        .skill-card i {
+            font-size: 2.5rem; margin-bottom: 15px; display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card span {
+            display: block; font-size: 0.75rem; font-weight: 700;
+            color: #eee; letter-spacing: 1px; text-transform: uppercase;
+        }
+
+        /* Border Color Logic */
+        .skill-card:hover { border-color: var(--hover-color, #fff); box-shadow: 0 0 30px var(--hover-glow, rgba(255,255,255,0.2)); transform: scale(1.05) translateY(-5px); }
+        .skill-card:hover i { transform: scale(1.2); color: var(--hover-color); }
+
+        /* Tech-Specific Colors */
+        .c-icon { --hover-color: #5C6BC0; }
+        .cpp-icon { --hover-color: #00599C; }
+        .java-icon { --hover-color: #f8981d; }
+        .js-icon { --hover-color: #f7df1e; }
+        .ts-icon { --hover-color: #3178c6; }
+        .py-icon { --hover-color: #3776ab; }
+        .html-icon { --hover-color: #e34f26; }
+        .css-icon { --hover-color: #1572b6; }
+        .react-icon { --hover-color: #61dafb; }
+        .next-icon { --hover-color: #ffffff; }
+        .node-icon { --hover-color: #339933; }
+        .ex-icon { --hover-color: #828282; }
+        .tw-icon { --hover-color: #06b6d4; }
+        .mg-icon { --hover-color: #47A248; }
+        .sql-icon { --hover-color: #4479A1; }
+        .neo-icon { --hover-color: #008CC1; }
+         /* Decrease the minimum height of the last section if it feels too long */
+#contact {
+    min-height: auto; /* Changed from 100vh to allow content to fit naturally */
+    padding-bottom: 40px; /* Adjust this to control the gap from the bottom of the form */
+}
+
+/* Tighten the footer padding and margins */
+footer {
+    padding: 20px 8%; /* Reduced from 40px/50px to 20px */
+    text-align: center;
+    border-top: 1px solid var(--glass-border);
+    margin-top: 0; /* Removed the 40px/50px margin-top */
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.footer-text {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    margin: 0; /* Ensure no default paragraph margins are pushing it down */
+}
+
+        /* --- RESET STYLES FROM INDEX.HTML --- */
+        #spaceCanvas {
+            position: fixed;}
+
+    </style>
+</head>
+<body>
+
+    <canvas id="spaceCanvas"></canvas>
+    <nav>
+        <div class="logo">VG</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="skills.html" style="opacity: 1; color: var(--accent-orange);">Skills</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+    <div class="main-header">
+        <h1>SKILLS</h1>
+    </div>
+
+    <div class="flow-container">
+        <div class="category-node">
+            <div class="node-label">Languages</div>
+            <div class="skills-grid">
+                <div class="skill-card c-icon"><i class="fas fa-copyright"></i><span>C</span></div>
+                <div class="skill-card cpp-icon"><i class="fab fa-cuttlefish"></i><span>C++</span></div>
+                <div class="skill-card java-icon"><i class="fab fa-java"></i><span>Java</span></div>
+                <div class="skill-card py-icon"><i class="fab fa-python"></i><span>Python</span></div>
+                <div class="skill-card html-icon"><i class="fab fa-html5"></i><span>HTML5</span></div>
+                <div class="skill-card css-icon"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
+                <div class="skill-card js-icon"><i class="fab fa-js"></i><span>JavaScript</span></div>
+                <div class="skill-card ts-icon"><i class="fas fa-code"></i><span>TypeScript</span></div>
+            </div>
+        </div>
+
+        <div class="category-node">
+            <div class="node-label">Web Development</div>
+            <div class="skills-grid">
+                <div class="skill-card tw-icon"><i class="fab fa-css3"></i><span>TailwindCSS</span></div>
+                <div class="skill-card react-icon"><i class="fab fa-react"></i><span>React</span></div>
+                <div class="skill-card next-icon"><i class="fas fa-terminal"></i><span>Next.js</span></div>
+                <div class="skill-card node-icon"><i class="fab fa-node-js"></i><span>Node.js</span></div>
+                <div class="skill-card ex-icon"><i class="fas fa-server"></i><span>Express.js</span></div>
+                
+            </div>
+        </div>
+
+        <div class="category-node">
+            <div class="node-label">Databases</div>
+            <div class="skills-grid">
+                <div class="skill-card sql-icon"><i class="fas fa-database"></i><span>MySQL</span></div>
+                <div class="skill-card mg-icon"><i class="fas fa-leaf"></i><span>MongoDB</span></div>
+                 <div class="skill-card neo-icon"><i class="fas fa-project-diagram"></i><span>Neo4j</span></div>
+            </div>
+        </div>
+    </div>
+     <footer>
+        <p class="footer-text">
+            © 2026 All Rights Reserved | Made with <span class="heart">❤️</span> by Vansh Gupta
+        </p>
+    </footer>
+
+    <script>
+    (function(){
+        const canvas = document.getElementById('spaceCanvas');
+        const ctx = canvas.getContext('2d');
+        let w, h, dpi = window.devicePixelRatio || 1;
+        let stars = [];
+        let mouse = { x: -1000, y: -1000 };
+
+        function resize(){
+            w = window.innerWidth; h = window.innerHeight;
+            canvas.width = w * dpi; canvas.height = h * dpi;
+            ctx.setTransform(dpi, 0, 0, dpi, 0, 0);
+        }
+
+        class Star {
+            constructor() {
+                this.init();
+            }
+            init() {
+                this.x = Math.random() * w;
+                this.y = Math.random() * h;
+                this.z = Math.random() * w; // Depth
+                this.vx = 0; this.vy = 0;
+                this.size = 0.5;
+            }
+            update() {
+                // Slow Motion Drift
+                this.z -= 0.5; 
+                if (this.z <= 0) this.z = w;
+
+                // 3D Projection
+                let px = (this.x - w / 2) * (w / this.z) + w / 2;
+                let py = (this.y - h / 2) * (w / this.z) + h / 2;
+                let s = (1 - this.z / w) * 3;
+
+                // Mouse Magnetism (Slow Motion Response)
+                let dx = mouse.x - px;
+                let dy = mouse.y - py;
+                let dist = Math.sqrt(dx*dx + dy*dy);
+                if (dist < 200) {
+                    px -= dx * 0.05;
+                    py -= dy * 0.05;
+                }
+
+                ctx.fillStyle = `rgba(255, 255, 255, ${1 - this.z / w})`;
+                ctx.beginPath();
+                ctx.arc(px, py, s, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function loop(){
+            ctx.fillStyle = "black";
+            ctx.fillRect(0,0,w,h);
+            stars.forEach(s => s.update());
+            requestAnimationFrame(loop);
+        }
+
+        window.addEventListener('mousemove', e => {
+            mouse.x = e.clientX; mouse.y = e.clientY;
+        });
+
+        resize();
+        for(let i=0; i<400; i++) stars.push(new Star());
+        window.addEventListener('resize', resize);
+        loop();
+    })();
+
+    // Scroll Reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('reveal'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.category-node').forEach(n => observer.observe(n));
+    </script>
+</body>
+</html>
