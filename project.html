@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vansh Gupta | Projects</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #020204;
+            --accent-orange: #f39c12;
+            --text-gray: #a0a0a0;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        
+        body { 
+            background-color: var(--bg-dark); 
+            color: white; 
+            font-family: 'Inter', sans-serif; 
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #spaceCanvas {
+            position: fixed; top: 0; left: 0; z-index: -1; pointer-events: none;
+        }
+
+        /* --- NAV --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 25px 8%; position: relative; z-index: 10;
+        }
+        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: 2px; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: white; text-decoration: none; font-size: 0.9rem; opacity: 0.7; transition: 0.3s; }
+        .nav-links a:hover { opacity: 1; color: var(--accent-orange); }
+
+        /* --- PROJECTS HEADER --- */
+        .projects-section { padding: 60px 8%; flex: 1; }
+        .header-content { text-align: center; margin-bottom: 60px; }
+        .header-content h1 { font-size: 3rem; margin-bottom: 15px; }
+        .header-content p { color: var(--text-gray); max-width: 600px; margin: 0 auto; }
+
+        /* --- PROJECT GRID --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-orange);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background: #1a1a1a; /* Placeholder color */
+            overflow: hidden;
+        }
+
+        .project-img img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .project-card:hover .project-img img { transform: scale(1.1); }
+
+        .project-info { padding: 25px; }
+        .project-category { 
+            color: var(--accent-orange); 
+            font-size: 0.7rem; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .project-info h3 { font-size: 1.4rem; margin-bottom: 10px; }
+        .project-info p { color: var(--text-gray); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px; }
+
+        .project-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+        .tag { 
+            background: rgba(255,255,255,0.05); 
+            padding: 5px 12px; 
+            border-radius: 50px; 
+            font-size: 0.75rem; 
+            color: white;
+            border: 1px solid var(--glass-border);
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .project-link:hover { color: var(--accent-orange); }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 40px 8%;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            margin-top: 60px;
+        }
+        .heart { color: #ff4d4d; animation: beat 1.2s infinite; display: inline-block; }
+        @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+
+        @media (max-width: 768px) {
+            .header-content h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="spaceCanvas"></canvas>
+
+    <nav>
+        <div class="logo">VG</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="projects.html" style="color: var(--accent-orange); opacity: 1;">Projects</a>
+            <a href="skills.html">Skills</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <section class="projects-section">
+        <div class="header-content">
+            <h1>Featured Projects</h1>
+            <p>A collection of my recent work in Full-Stack Engineering, AI integrations, and UI/UX design.</p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800" alt="Project 1">
+                </div>
+                <div class="project-info">
+                    <span class="project-category">AI Integration</span>
+                    <h3>NeuroDrive AI</h3>
+                    <p>An intelligent task automation platform that uses LLMs to streamline developer workflows.</p>
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">OpenAI</span>
+                    </div>
+                    <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Project 2">
+                </div>
+                <div class="project-info">
+                    <span class="project-category">Full Stack</span>
+                    <h3>EcomSphere</h3>
+                    <p>A high-performance e-commerce engine with real-time inventory tracking and global payments.</p>
+                    <div class="project-tags">
+                        <span class="tag">Next.js</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Stripe</span>
+                    </div>
+                    <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" alt="Project 3">
+                </div>
+                <div class="project-info">
+                    <span class="project-category">Cybersecurity</span>
+                    <h3>Sentinel Shield</h3>
+                    <p>Real-time network monitoring dashboard with automated threat detection and reporting.</p>
+                    <div class="project-tags">
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Go</span>
+                    </div>
+                    <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p class="footer-text">© 2026 Vansh Gupta | Made with <span class="heart">❤️</span></p>
+    </footer>
+
+    <script>
+        /* --- STAR BACKGROUND ENGINE --- */
+        (function(){
+            const canvas = document.getElementById('spaceCanvas');
+            const ctx = canvas.getContext('2d');
+            let w, h, dpi = window.devicePixelRatio || 1;
+            let stars = [];
+
+            function resize(){
+                w = window.innerWidth; h = window.innerHeight;
+                canvas.width = w * dpi; canvas.height = h * dpi;
+                ctx.setTransform(dpi, 0, 0, dpi, 0, 0);
+                stars = [];
+                for(let i=0; i<300; i++) stars.push(new Star());
+            }
+
+            class Star {
+                constructor() {
+                    this.x = Math.random() * w;
+                    this.y = Math.random() * h;
+                    this.size = Math.random() * 2;
+                    this.speed = Math.random() * 0.5 + 0.1;
+                }
+                update() {
+                    this.y += this.speed;
+                    if (this.y > h) this.y = 0;
+                }
+                draw() {
+                    ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            function loop(){
+                ctx.clearRect(0, 0, w, h);
+                stars.forEach(s => { s.update(); s.draw(); });
+                requestAnimationFrame(loop);
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+            loop();
+        })();
+    </script>
+</body>
+</html>

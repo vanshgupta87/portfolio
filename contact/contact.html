@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vansh Gupta | Contact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="/logo.svg">
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          // Replace with your actual Public Key from EmailJS Account Tab
+          emailjs.init("Iv22eDXdflTkKDiLA"); 
+       })();
+    </script>
+
+    <style>
+        :root {
+            --bg-dark: #020204;
+            --accent-orange: #f39c12;
+            --glass-white: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --success-green: #2ecc71;
+            --text-gray: #a0a0a0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background-color: var(--bg-dark); 
+            color: white; 
+            font-family: 'Inter', sans-serif; 
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #spaceCanvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; pointer-events: none;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 30px 10%; background: transparent;
+        }
+        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: 2px; }
+        .nav-links a {
+            color: white; text-decoration: none; margin-left: 30px;
+            font-size: 0.9rem; opacity: 0.7; transition: 0.3s;
+        }
+        .nav-links a:hover { opacity: 1; color: var(--accent-orange); }
+
+        /* --- CONTACT SECTION --- */
+        .main-content { flex: 1; }
+
+        .contact-container {
+            max-width: 900px; margin: 50px auto; padding: 40px 20px;
+            display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px;
+            opacity: 0; transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+        .contact-container.reveal { opacity: 1; transform: translateY(0); }
+
+        .contact-info h1 { font-size: 3rem; margin-bottom: 20px; letter-spacing: -1px; }
+        .contact-info p { opacity: 0.6; line-height: 1.6; margin-bottom: 30px; }
+
+        .social-icons { display: flex; gap: 20px; }
+        .social-icons a {
+            width: 50px; height: 50px; border-radius: 50%;
+            border: 1px solid var(--glass-border); background: var(--glass-white);
+            display: flex; align-items: center; justify-content: center;
+            color: white; text-decoration: none; font-size: 1.2rem;
+            transition: 0.4s;
+        }
+        .social-icons a:hover {
+            border-color: var(--accent-orange); color: var(--accent-orange);
+            transform: translateY(-5px); box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+        }
+
+        /* --- FORM WRAPPER --- */
+        .form-wrapper {
+            background: var(--glass-white);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            padding: 40px; border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            min-height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .input-group { margin-bottom: 25px; }
+        .input-group label {
+            display: block; font-size: 0.75rem; text-transform: uppercase;
+            letter-spacing: 2px; margin-bottom: 10px; opacity: 0.5;
+        }
+        .input-group input, .input-group textarea {
+            width: 100%; background: rgba(0,0,0,0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px; padding: 15px; color: white;
+            font-family: inherit; transition: 0.3s;
+        }
+        .input-group input:focus, .input-group textarea:focus {
+            outline: none; border-color: var(--accent-orange);
+            background: rgba(243, 156, 18, 0.05);
+        }
+
+        .send-btn {
+            width: 100%; padding: 15px; border-radius: 12px;
+            border: none; background: var(--accent-orange);
+            color: black; font-weight: 800; cursor: pointer;
+            text-transform: uppercase; letter-spacing: 2px;
+            transition: 0.4s;
+        }
+        .send-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px var(--accent-orange);
+        }
+
+        #successMessage {
+            display: none; text-align: center;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        #successMessage i { font-size: 4rem; color: var(--success-green); margin-bottom: 20px; }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 40px 8%;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            width: 100%;
+        }
+        .footer-text { font-size: 0.9rem; color: var(--text-gray); letter-spacing: 1px; }
+        .heart { color: #ff4d4d; display: inline-block; animation: beat 1.2s infinite; }
+
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .contact-container { grid-template-columns: 1fr; text-align: center; }
+            .social-icons { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="spaceCanvas"></canvas>
+
+    <nav>
+        <div class="logo">VG</div>
+        <div class="nav-links">
+            <a href="/index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="/skills/skills.html">Skills</a>
+            <a href="/contact/contact.html" style="opacity: 1; color: var(--accent-orange);">Contact</a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="contact-container" id="contactSection">
+            <div class="contact-info">
+                <h1>Get in touch.</h1>
+                <p>I’m currently open for freelance opportunities and full-time positions. Let's build something scalable together.</p>
+                
+                <div class="social-icons">
+                    <a href="https://github.com/vanshgupta87" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/vansh-gupta-423a01361" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fa-solid fa-x"></i></a>
+                    <a href="https://www.instagram.com/_vcnshh_" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="form-wrapper">
+                <form id="portfolioForm">
+                    <div class="input-group">
+                        <label>Your Name</label>
+                        <input type="text" id="userName" name="from_name" placeholder="Vansh Gupta" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="email" id="userEmail" name="reply_to" placeholder="email@example.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Message</label>
+                        <textarea id="userMessage" name="message" rows="5" placeholder="Let's talk about my project..." required></textarea>
+                    </div>
+                    <button type="submit" class="send-btn">Send Mission Control</button>
+                </form>
+
+                <div id="successMessage">
+                    <i class="fas fa-circle-check"></i>
+                    <h2>Mission Success!</h2>
+                    <p>Thanks <span id="displayUserName"></span>. Your message has been beamed into my inbox.</p>
+                    <button onclick="location.reload()" class="send-btn" style="margin-top: 20px; background: transparent; border: 1px solid var(--glass-border); color: white;">Send Another</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-text">
+            © 2026 All Rights Reserved | Made with <span class="heart">❤️</span> by Vansh Gupta
+        </p>
+    </footer>
+
+    <script>
+    /* --- INTEGRATED 3D SLOW-MO SPACE ENGINE --- */
+    (function(){
+        const canvas = document.getElementById('spaceCanvas');
+        const ctx = canvas.getContext('2d');
+        let w, h, dpi = window.devicePixelRatio || 1;
+        let stars = [];
+        let mouse = { x: -1000, y: -1000 };
+
+        function resize(){
+            w = window.innerWidth; h = window.innerHeight;
+            canvas.width = w * dpi; canvas.height = h * dpi;
+            ctx.setTransform(dpi, 0, 0, dpi, 0, 0);
+        }
+
+        class Star {
+            constructor() { this.init(); }
+            init() {
+                this.x = Math.random() * w;
+                this.y = Math.random() * h;
+                this.z = Math.random() * w;
+            }
+            update() {
+                this.z -= 0.6;
+                if (this.z <= 0) this.z = w;
+                let px = (this.x - w / 2) * (w / this.z) + w / 2;
+                let py = (this.y - h / 2) * (w / this.z) + h / 2;
+                let s = (1 - this.z / w) * 3;
+                let dx = mouse.x - px;
+                let dy = mouse.y - py;
+                let dist = Math.sqrt(dx*dx + dy*dy);
+                if (dist < 150) {
+                    px -= dx * 0.04;
+                    py -= dy * 0.04;
+                }
+                ctx.fillStyle = `rgba(255, 255, 255, ${1 - this.z / w})`;
+                ctx.beginPath();
+                ctx.arc(px, py, s, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function loop(){
+            ctx.fillStyle = "#020204";
+            ctx.fillRect(0,0,w,h);
+            stars.forEach(s => s.update());
+            requestAnimationFrame(loop);
+        }
+
+        window.addEventListener('mousemove', e => {
+            mouse.x = e.clientX; mouse.y = e.clientY;
+        });
+
+        resize();
+        for(let i=0; i<350; i++) stars.push(new Star());
+        window.addEventListener('resize', resize);
+        loop();
+    })();
+
+    /* --- EMAILJS SUBMISSION LOGIC --- */
+    const form = document.getElementById('portfolioForm');
+    const successBox = document.getElementById('successMessage');
+    const displayUserName = document.getElementById('displayUserName');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const btn = document.querySelector('.send-btn');
+        const name = document.getElementById('userName').value;
+        
+        btn.innerHTML = "Beaming Message...";
+        btn.style.opacity = "0.7";
+        btn.disabled = true;
+
+        // Configuration
+        const serviceID = 'service_bi7i4bv';
+        const templateID = 'template_42f33rt'; // Replace this!
+
+        emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                form.style.display = 'none';
+                successBox.style.display = 'block';
+                displayUserName.innerText = name;
+            }, (err) => {
+                btn.disabled = false;
+                btn.innerHTML = "Mission Failed. Try Again?";
+                btn.style.opacity = "1";
+                alert("Transmission error: " + JSON.stringify(err));
+            });
+    });
+
+    window.onload = () => {
+        document.getElementById('contactSection').classList.add('reveal');
+    }
+    </script>
+</body>
+</html>
