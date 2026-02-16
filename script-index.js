@@ -61,7 +61,7 @@
 
 /* --- TYPEWRITER EFFECT --- */
 const textEl = document.getElementById('typewriter');
-const phrases = ["Full-Stack Developer", "Hybrid AI Engineer", "Passionate Developer"];
+const phrases = ["Full-Stack Developer", "Hybrid AI Developer", "Passionate Developer"];
 let phraseIdx = 0;
 let charIdx = 0;
 let isDeleting = false;
@@ -111,4 +111,5 @@ card.addEventListener('mousemove', (e) => {
 card.addEventListener('mouseleave', () => {
     inner.style.transition = 'transform 0.4s ease-out'; // Smooth reset
     inner.style.transform = `translateX(0px) translateY(0px)`;
+
 });
