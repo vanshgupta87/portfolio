@@ -10,8 +10,7 @@
 
 body { 
     background-color: var(--bg-dark); 
-    color: white; 
-    font-family: 'Inter', sans-serif; 
+    color: white;
     overflow-x: hidden;
     min-height: 100vh;
     display: flex;
@@ -100,4 +99,5 @@ footer {
 @media (max-width: 992px) {
     .hero { flex-direction: column; text-align: center; }
     .cta-group { justify-content: center; }
+
 }
