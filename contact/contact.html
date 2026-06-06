@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,4 +77,84 @@
 
     <script src="contact.js"></script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vansh Gupta | Contact</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="/logo.svg">
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+
+    <canvas id="spaceCanvas"></canvas>
+
+    <nav>
+        <div class="logo">VG</div>
+        <div class="nav-links">
+            <a href="/index.html">Home</a>
+            <a href="/project/project.html">Projects</a>
+            <a href="/skills/skills.html">Skills</a>
+            <a href="/contact/contact.html" style="opacity: 1; color: var(--accent-orange);">Contact</a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="contact-container" id="contactSection">
+            <div class="contact-info">
+                <h1>Get in touch.</h1>
+                <p>I’m currently open for freelance opportunities and full-time positions. Let's build something scalable together.</p>
+                
+                <div class="social-icons">
+                    <a href="https://github.com/vanshgupta87" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/vansh-gupta-423a01361" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/VanshGupta1395"><i class="fa-solid fa-x"></i></a>
+                    <a href="https://www.instagram.com/_vcnshh_" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="form-wrapper">
+                <form id="portfolioForm">
+                    <div class="input-group">
+                        <label>Your Name</label>
+                        <input type="text" id="userName" name="from_name" placeholder="Vansh Gupta" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="email" id="userEmail" name="reply_to" placeholder="email@example.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Message</label>
+                        <textarea id="userMessage" name="message" rows="5" placeholder="Let's talk about my project..." required></textarea>
+                    </div>
+                    <button type="submit" class="send-btn">Send Mission Control</button>
+                </form>
+
+                <div id="successMessage">
+                    <i class="fas fa-circle-check"></i>
+                    <h2>Mission Success!</h2>
+                    <p>Thanks <span id="displayUserName"></span>. Your message has been beamed into my inbox.</p>
+                    <button onclick="location.reload()" class="send-btn" style="margin-top: 20px; background: transparent; border: 1px solid var(--glass-border); color: white;">Send Another</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-text">
+            © 2026 All Rights Reserved | Made with <span class="heart">❤️</span> by Vansh Gupta
+        </p>
+    </footer>
+
+    <script src="contact.js"></script>
+</body>
+>>>>>>> e24d17a2649c0a5aa338661b061d75dff0765b6a
 </html>
